@@ -1,0 +1,27 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface MediaPlayer{
+void playMedia()
+}
+class MediaPlayerAdapter{
+void playMedia()
+}
+class MediaPlayerAdapter2{
+    Mp3Player mp3Player
+    void playMedia()
+}
+class Mp3Player{
+void play()
+}
+class Mp4MediaPlayer{
+void playMedia()
+}
+
+MediaPlayer <|-- Mp4MediaPlayer
+MediaPlayer <|-- MediaPlayerAdapter
+Mp3Player <|-- MediaPlayerAdapter
+Mp3Player *-- MediaPlayerAdapter2
+MediaPlayer <|-- MediaPlayerAdapter2
+
+@enduml

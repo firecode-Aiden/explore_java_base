@@ -7,7 +7,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="design_patreen" />
         <module name="javase_base" />
+        <module name="spring_framework" />
       </profile>
     </annotationProcessing>
   </component>

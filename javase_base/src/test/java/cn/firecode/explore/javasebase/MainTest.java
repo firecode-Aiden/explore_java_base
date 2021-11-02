@@ -4,6 +4,9 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
+
 /**
  * @Project IntelliJ IDEA
  * @Author flynn
@@ -42,5 +45,26 @@ public class MainTest {
     @ValueSource(ints = {1})
     public void testParameterizedUnitTest(int num){
         System.out.println(num);
+    }
+
+    @Test
+    public void timeoutTest(){
+        Assertions.assertTimeout(Duration.of(3, ChronoUnit.SECONDS), ()->{
+            Thread.sleep(600);
+            System.out.println("timeout test excute");
+        });
+    }
+
+    @Test
+    public void timeoutTimePreemptively(){
+        Assertions.assertTimeoutPreemptively(Duration.of(3, ChronoUnit.SECONDS), ()->{
+            Thread.sleep(600);
+            System.out.println("timeout test excute");
+        });
+    }
+
+    @Test
+    public void testGroupAssertions(){
+        Assertions.assertAll(()->Assertions.assertEquals(1, 1), ()-> Assertions.assertEquals(2, 2));
     }
 }
